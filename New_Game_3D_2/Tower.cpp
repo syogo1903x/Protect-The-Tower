@@ -254,11 +254,6 @@ void Tower::Release()
 	}
 }
 
-void Tower::Atack()
-{
-
-}
-
 // ウェーブクリア時のクリア表示
 void Tower::GameWaveString()
 {

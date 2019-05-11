@@ -9,6 +9,7 @@ DefenseAtackBall::DefenseAtackBall(int _modelHandle)
 // íœ
 DefenseAtackBall::~DefenseAtackBall()
 {
+
 }
 
 void DefenseAtackBall::SetDefenseObject(int _modelHamdle)

@@ -1,6 +1,6 @@
 #pragma once
 
-
+// UŒ‚
 struct Atack
 {
 	bool isAtack;

@@ -15,21 +15,35 @@ public:
 	CharacterBase() {};
 	virtual ~CharacterBase() {};
 
+	// アニメーション初期化
 	virtual		void AnimationInit();
+	// 更新
 	virtual		void Update(Camera &_camera);
+	// 描画
 	virtual		void Draw();
+	// 解放
 	virtual		void Release();
+	// 早いダメージ
 	virtual		void FastDamage();
+	// 遅いダメージ
 	virtual		void SlowDamage();
+	// ヒット
 	virtual		void OnHit(CharacterBase *_player);
 
+	// 初期化
 	virtual		void Init(int model) = 0;
 	virtual		void Init(char *_playerNumber) = 0;
+	// アニメーション
 	virtual		void Animation() = 0;
+	// キャラクタージャンプ
 	virtual		void CharacterJump() = 0;
+	// キャラクター移動
 	virtual		void CharacterMove(Camera &_camera) = 0;
+	// キャラクターアタック
 	virtual		void CharacterAtack() = 0;
+	// キャラクター必殺技
 	virtual		void CharacterDeathBlow() = 0;
+	// キャラクターダメージ
 	virtual		void CharacterDamage() = 0;
 
 	// 吹き飛ばし処理

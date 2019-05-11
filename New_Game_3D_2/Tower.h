@@ -5,15 +5,20 @@ class SoundEffect;
 class Tower
 {
 public:
+	// コンストラクタ
 	Tower();
+	// デストラクタ
 	~Tower();
 
+	// 初期化
 	void Init();
+	// 更新
 	void Update();
+	// 描画
 	void Draw();
+	// 解放
 	void Release();
-
-	void Atack();
+	// ウェーブ文字
 	void GameWaveString();
 
 	// ゲッター
@@ -21,7 +26,6 @@ public:
 	float GetRadius() { return radius; }
 	static int GetLife() { return life; }
 	bool GetHit() { return isHit; }
-	
 	static int GetWave() { return waveNumber; }
 	static int GetSmallEnemy() { return smallEnemyCount; }
 	static int GetMediumEnemy() { return mediumEnemyCount; }
@@ -38,12 +42,17 @@ public:
 
 
 private:
+	// タワーモデル
 	int towerModelHandle;
+	// 位置
 	VECTOR pos;
 
+	// 体力
 	static int life;
+	// 体力減少
 	int lifeDamage;
 
+	// 半径
 	float radius;
 	bool isHit;
 	int damageCount;
@@ -60,13 +69,16 @@ private:
 	static int waveMoveXCount;
 	static int waveMoveYCount;
 
+	//各ステージの難しさ
 	int difficultCount;
 
 	// 効果音
 	SoundEffect *se;
 
+	// ウェーブクリア画像
 	int weavClearGraphHandle[3];
 
+	// ゲームオーバーカウント
 	int gameOverTime;
 	VECTOR towerSize;
 };
