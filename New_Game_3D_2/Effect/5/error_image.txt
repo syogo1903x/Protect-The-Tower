@@ -1,0 +1,4 @@
+C:\Users\ooyam\Desktop\現個人制作途中\New_Game_3D_2\New_Game_3D_2\Effect\5\A_Gohlem1.efkproj
+System.ArgumentException: 使用されたパラメーターが有効ではありません。
+   場所 System.Drawing.Bitmap..ctor(String filename)
+   場所 Effekseer.GUI.Component.PathForImage.UpdatePreview(String path)

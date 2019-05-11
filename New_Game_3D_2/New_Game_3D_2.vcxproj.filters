@@ -1,0 +1,581 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Main">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Main\GameMain">
+      <UniqueIdentifier>{d2e70db6-0d50-4426-895b-84eb503e55c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Input">
+      <UniqueIdentifier>{9823c150-28cc-4b37-9914-95f4ce5e924a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Camera">
+      <UniqueIdentifier>{375c7910-322d-4c4f-bc5d-9f8d2142681d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Stage">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Main\Math">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Main\GameMain\HitCheck">
+      <UniqueIdentifier>{585e6bfd-ce17-4dcb-ae98-d41e488205b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Item">
+      <UniqueIdentifier>{575ca67d-5cc6-45b7-a1fa-46727ccca2e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Tower">
+      <UniqueIdentifier>{ae9b83ea-804f-496f-8e7a-dc9837f02f08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Shader">
+      <UniqueIdentifier>{6c32a00e-94a4-439d-a9c7-444fde9bcacb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\MiniMap">
+      <UniqueIdentifier>{c4f0636c-304e-4548-a07c-71be0437abbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\UI">
+      <UniqueIdentifier>{a88362ba-00fc-459e-a986-5195f3e495c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Character">
+      <UniqueIdentifier>{89647eab-03e1-4467-8276-88c43abe24cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Character\Player">
+      <UniqueIdentifier>{2461918b-2a13-476a-8cdc-c1df5ab146b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Character\Enemy">
+      <UniqueIdentifier>{adc07768-a80e-4d44-a912-fea9c04b7f84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Character\Enemy\SmallEnemy">
+      <UniqueIdentifier>{f084f0e9-a7b7-4aeb-883a-5144e2156f68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Character\Enemy\MediumBoss">
+      <UniqueIdentifier>{162e66b9-505a-445d-8951-38583dc5c9a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Character\Enemy\Last Boss">
+      <UniqueIdentifier>{1ce55262-b535-443d-b597-672db6dd5c6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Character\Animation">
+      <UniqueIdentifier>{063b9dd4-a251-4e03-a6ad-74b8cc9059d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Character\Atack">
+      <UniqueIdentifier>{6de75741-749c-47ec-98f1-fda57ec99224}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Character\Move">
+      <UniqueIdentifier>{b3688697-583b-4408-9414-68128313ecb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Music">
+      <UniqueIdentifier>{9d1d7be7-52a3-4daa-b47c-58285fe1dfef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Music\BGM">
+      <UniqueIdentifier>{352c8d8d-e7e4-4d32-812f-0cf04589d321}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Music\SE">
+      <UniqueIdentifier>{0832cd97-7311-497e-a051-95ae7686341e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Font">
+      <UniqueIdentifier>{e54b8041-d56f-423b-bc85-02e57b92d5b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Effect">
+      <UniqueIdentifier>{81771fdc-4f6c-4a8f-bd63-8a08b5a86eb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Effect\Particle">
+      <UniqueIdentifier>{50ff1b95-37d6-42d8-9990-5c48e5653779}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Effect\Effeksser">
+      <UniqueIdentifier>{9cf73284-583c-46e6-b696-a3d977e6f565}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Effect\Effeksser\EffectManager">
+      <UniqueIdentifier>{37d541d3-c2d1-4f18-a863-75b2bd40b479}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Effect\Fade">
+      <UniqueIdentifier>{0f9934c3-30de-4e46-8818-53b97197bc91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Character\Jump">
+      <UniqueIdentifier>{038046d2-979f-42a3-bf39-ae3980f91f85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Effect\Effeksser\EffectBase">
+      <UniqueIdentifier>{27d18e63-bbbf-4077-b12d-351cd429738d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Effect\Effeksser\EffectBase\Caharacter">
+      <UniqueIdentifier>{026b91dd-a471-4848-8867-bdd796735303}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Effect\Effeksser\EffectBase\Defense">
+      <UniqueIdentifier>{087cf594-5098-4113-95f9-08af2e9a09a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Defence">
+      <UniqueIdentifier>{7a5c61e0-5308-4c87-b739-ed2696be356c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Defence\DefenseWall">
+      <UniqueIdentifier>{c0b8029c-70aa-44e8-9aeb-597ee9813864}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Defence\DefenseBase">
+      <UniqueIdentifier>{bd5c340c-33b8-4d53-b573-257d20e217f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Defence\DefenseManager">
+      <UniqueIdentifier>{e8a0d1ef-b687-436a-bca2-0129c52292f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Defence\DefenseAtackBall">
+      <UniqueIdentifier>{c9182470-1517-42bb-b086-a95e7448be8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Defence\DefenseBuyObject">
+      <UniqueIdentifier>{64539698-2753-4de6-8091-2665c58c62e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Defence\DefenseFire">
+      <UniqueIdentifier>{5f0b43c6-c40f-4ae8-bfc8-dddb0c351361}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Defence\DefenseSoldier">
+      <UniqueIdentifier>{8724699c-96f3-4654-b567-3e787735b34a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Character\Shot">
+      <UniqueIdentifier>{4b351af4-40e9-43f1-9a58-b8b478f06b5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Load">
+      <UniqueIdentifier>{d6628c1f-27d2-42fc-8a3e-ec500fa9129f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Effect\Effeksser\EffectBase\Tower">
+      <UniqueIdentifier>{604057a3-9acd-4038-a74d-c46887f7caad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneChange">
+      <UniqueIdentifier>{636a26d7-53da-436a-a3b7-4f46da312ba4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneChange\GameScene">
+      <UniqueIdentifier>{00e995ac-02e7-4400-9e28-ea1de8dc14a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneChange\TitleScene">
+      <UniqueIdentifier>{7d3ac14a-bc4e-4121-a32c-5f2294ed856c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneChange\MenuScene">
+      <UniqueIdentifier>{72d61270-d1b2-4a23-a3e6-768273fce7b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneChange\SceneManager">
+      <UniqueIdentifier>{e6ab8255-230b-4746-8ef3-3bbc00b8800d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneChange\DemoScene">
+      <UniqueIdentifier>{77206d05-592b-4546-9309-bfccb25e9ec2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneChange\ResultScene">
+      <UniqueIdentifier>{c941f587-d117-40be-9286-ade1a7391a41}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Common.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Main\GameMain\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage.h">
+      <Filter>Main\GameMain\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Lerp.h">
+      <Filter>Main\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="HitCheck.h">
+      <Filter>Main\GameMain\HitCheck</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneTitle.h">
+      <Filter>Main\SceneChange\TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneBase.h">
+      <Filter>Main\SceneChange\SceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneChangeManager.h">
+      <Filter>Main\SceneChange\SceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneResult.h">
+      <Filter>Main\SceneChange\ResultScene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGame.h">
+      <Filter>Main\SceneChange\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMenu.h">
+      <Filter>Main\SceneChange\MenuScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Main\GameMain\Character\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyInput.h">
+      <Filter>Main\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="PadInput.h">
+      <Filter>Main\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterBase.h">
+      <Filter>Main\GameMain\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Fade.h">
+      <Filter>Main\GameMain\Effect\Fade</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyManager.h">
+      <Filter>Main\GameMain\Character\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>Main\GameMain\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>Main\GameMain\Character\Enemy\Last Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Main\GameMain\Character\Enemy\SmallEnemy</Filter>
+    </ClInclude>
+    <ClInclude Include="MediumBoss.h">
+      <Filter>Main\GameMain\Character\Enemy\MediumBoss</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemManager.h">
+      <Filter>Main\GameMain\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemBase.h">
+      <Filter>Main\GameMain\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Recovery.h">
+      <Filter>Main\GameMain\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleEmitter.h">
+      <Filter>Main\GameMain\Effect\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleList.h">
+      <Filter>Main\GameMain\Effect\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectManager.h">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectBase.h">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseInput.h">
+      <Filter>Main\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Main\GameMain\Character\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Atack.h">
+      <Filter>Main\GameMain\Character\Atack</Filter>
+    </ClInclude>
+    <ClInclude Include="Jump.h">
+      <Filter>Main\GameMain\Character\Jump</Filter>
+    </ClInclude>
+    <ClInclude Include="Move.h">
+      <Filter>Main\GameMain\Character\Move</Filter>
+    </ClInclude>
+    <ClInclude Include="Shot.h">
+      <Filter>Main\GameMain\Character\Shot</Filter>
+    </ClInclude>
+    <ClInclude Include="Tower.h">
+      <Filter>Main\GameMain\Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="DefenseWall.h">
+      <Filter>Main\GameMain\Defence\DefenseWall</Filter>
+    </ClInclude>
+    <ClInclude Include="DefenseBase.h">
+      <Filter>Main\GameMain\Defence\DefenseBase</Filter>
+    </ClInclude>
+    <ClInclude Include="DefenseManager.h">
+      <Filter>Main\GameMain\Defence\DefenseManager</Filter>
+    </ClInclude>
+    <ClInclude Include="DefenseAtackBall.h">
+      <Filter>Main\GameMain\Defence\DefenseAtackBall</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Main\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="DefenseBuyObject.h">
+      <Filter>Main\GameMain\Defence\DefenseBuyObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Coin.h">
+      <Filter>Main\GameMain\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="MiniMap.h">
+      <Filter>Main\GameMain\MiniMap</Filter>
+    </ClInclude>
+    <ClInclude Include="DefenseFire.h">
+      <Filter>Main\GameMain\Defence\DefenseFire</Filter>
+    </ClInclude>
+    <ClInclude Include="DefenseSoldier.h">
+      <Filter>Main\GameMain\Defence\DefenseSoldier</Filter>
+    </ClInclude>
+    <ClInclude Include="BackGroundMusic.h">
+      <Filter>Main\GameMain\Music\BGM</Filter>
+    </ClInclude>
+    <ClInclude Include="FontText.h">
+      <Filter>Main\GameMain\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundEffect.h">
+      <Filter>Main\GameMain\Music\SE</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectBullet.h">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectDeathBlow.h">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectHit.h">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectJump.h">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectLaser.h">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectMagicTeam.h">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectFire.h">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Defense</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectAppearBoss.h">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectAppearMedium.h">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectDown.h">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadFile.h">
+      <Filter>Main\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneDemo.h">
+      <Filter>Main\SceneChange\DemoScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Loading.h">
+      <Filter>Main\GameMain\Load</Filter>
+    </ClInclude>
+    <ClInclude Include="NowLoad.h">
+      <Filter>Main\GameMain\Load</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectTowerHit.h">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectTowerOver.h">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectTowerDown.h">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectDeathBlow_Ukon.h">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectDeathBlow_Ruby.h">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectDeathBlow_Chinami.h">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectDeathBlow_Inu.h">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectDeathBlow_Karasu.h">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GameMain.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage.cpp">
+      <Filter>Main\GameMain\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Main\GameMain\Character\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Main\GameMain\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Lerp.cpp">
+      <Filter>Main\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="HitCheck.cpp">
+      <Filter>Main\GameMain\HitCheck</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneTitle.cpp">
+      <Filter>Main\SceneChange\TitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneChangeManager.cpp">
+      <Filter>Main\SceneChange\SceneManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneResult.cpp">
+      <Filter>Main\SceneChange\ResultScene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGame.cpp">
+      <Filter>Main\SceneChange\GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMenu.cpp">
+      <Filter>Main\SceneChange\MenuScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Main\GameMain\Character\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyInput.cpp">
+      <Filter>Main\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="PadInput.cpp">
+      <Filter>Main\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Fade.cpp">
+      <Filter>Main\GameMain\Effect\Fade</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterBase.cpp">
+      <Filter>Main\GameMain\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyManager.cpp">
+      <Filter>Main\GameMain\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>Main\GameMain\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>Main\GameMain\Character\Enemy\Last Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Main\GameMain\Character\Enemy\SmallEnemy</Filter>
+    </ClCompile>
+    <ClCompile Include="MediumBoss.cpp">
+      <Filter>Main\GameMain\Character\Enemy\MediumBoss</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemManager.cpp">
+      <Filter>Main\GameMain\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemBase.cpp">
+      <Filter>Main\GameMain\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Recovery.cpp">
+      <Filter>Main\GameMain\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleEmitter.cpp">
+      <Filter>Main\GameMain\Effect\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleList.cpp">
+      <Filter>Main\GameMain\Effect\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectManager.cpp">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectBase.cpp">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase</Filter>
+    </ClCompile>
+    <ClCompile Include="MouseInput.cpp">
+      <Filter>Main\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Shot.cpp">
+      <Filter>Main\GameMain\Character\Shot</Filter>
+    </ClCompile>
+    <ClCompile Include="Tower.cpp">
+      <Filter>Main\GameMain\Tower</Filter>
+    </ClCompile>
+    <ClCompile Include="DefenseWall.cpp">
+      <Filter>Main\GameMain\Defence\DefenseWall</Filter>
+    </ClCompile>
+    <ClCompile Include="DefenseManager.cpp">
+      <Filter>Main\GameMain\Defence\DefenseManager</Filter>
+    </ClCompile>
+    <ClCompile Include="DefenseAtackBall.cpp">
+      <Filter>Main\GameMain\Defence\DefenseAtackBall</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Main\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="DefenseBuyObject.cpp">
+      <Filter>Main\GameMain\Defence\DefenseBuyObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Coin.cpp">
+      <Filter>Main\GameMain\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="MiniMap.cpp">
+      <Filter>Main\GameMain\MiniMap</Filter>
+    </ClCompile>
+    <ClCompile Include="DefenseFire.cpp">
+      <Filter>Main\GameMain\Defence\DefenseFire</Filter>
+    </ClCompile>
+    <ClCompile Include="DefenseSoldier.cpp">
+      <Filter>Main\GameMain\Defence\DefenseSoldier</Filter>
+    </ClCompile>
+    <ClCompile Include="BackGroundMusic.cpp">
+      <Filter>Main\GameMain\Music\BGM</Filter>
+    </ClCompile>
+    <ClCompile Include="FontText.cpp">
+      <Filter>Main\GameMain\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundEffect.cpp">
+      <Filter>Main\GameMain\Music\SE</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectBullet.cpp">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectDeathBlow.cpp">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectHit.cpp">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectJump.cpp">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectLaser.cpp">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectMagicTeam.cpp">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectFire.cpp">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Defense</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectAppearMedium.cpp">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectAppearBoss.cpp">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectDown.cpp">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadFile.cpp">
+      <Filter>Main\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneDemo.cpp">
+      <Filter>Main\SceneChange\DemoScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Loading.cpp">
+      <Filter>Main\GameMain\Load</Filter>
+    </ClCompile>
+    <ClCompile Include="NowLoad.cpp">
+      <Filter>Main\GameMain\Load</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectTowerHit.cpp">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Tower</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectTowerOver.cpp">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Tower</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectTowerDown.cpp">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Tower</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectDeathBlow_Ukon.cpp">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectDeathBlow_Chinami.cpp">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectDeathBlow_Inu.cpp">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectDeathBlow_Karasu.cpp">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectDeathBlow_Ruby.cpp">
+      <Filter>Main\GameMain\Effect\Effeksser\EffectBase\Caharacter</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="PixelShader.psh">
+      <Filter>Main\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="VertexShader.vsh">
+      <Filter>Main\Shader</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>
