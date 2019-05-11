@@ -93,59 +93,6 @@ DefenseManager::~DefenseManager()
 // 初期化
 void DefenseManager::Init()
 {
-
-	// 壁用リスト初期化
-	DefenseWall *defenseWall = new DefenseWall(wallModelHamdel);
-	notDefenseWallList.push_back(defenseWall);
-	// 攻撃ボール用リスト初期化
-	DefenseAtackBall *defenseAtackBall = new DefenseAtackBall(atackBallModelHandle);
-	notDefenseAtackBallList.push_back(defenseAtackBall);
-	// 炎攻撃用リスト初期化
-	DefenseFire *defenseFire = new DefenseFire(fireModelHandle);
-	notDefenseFireList.push_back(defenseFire);
-	// 兵士攻撃用変数
-	DefenseSoldier *defenseSoldier = new DefenseSoldier(soldierModelHandle);
-	notDefenseSoldierList.push_back(defenseSoldier);
-	
-
-	// 壁 未使用リスト登録
-	if (!notDefenseWallList.empty())
-	{
-		for (notDefenseWallIter = notDefenseWallList.begin(); notDefenseWallIter != notDefenseWallList.end(); notDefenseWallIter++)
-		{
-			(*notDefenseWallIter)->Init();
-			(*notDefenseWallIter)->SetRotain(ZEROCLEAR);
-		}
-	}
-
-	// 攻撃ボール 未使用リスト登録
-	if (!notDefenseAtackBallList.empty())
-	{
-		for (notDefenseAtackBallIter = notDefenseAtackBallList.begin(); notDefenseAtackBallIter != notDefenseAtackBallList.end(); notDefenseAtackBallIter++)
-		{
-			(*notDefenseAtackBallIter)->Init();
-		}
-	}
-
-	// 炎攻撃 未使用リスト登録
-	if (!notDefenseFireList.empty())
-	{
-		for (notDefenseFireIter = notDefenseFireList.begin(); notDefenseFireIter != notDefenseFireList.end(); notDefenseFireIter++)
-		{
-			(*notDefenseFireIter)->Init();
-		}
-	}
-
-	// 兵士攻撃 未使用リスト登録
-	if (!notDefenseSoldierList.empty())
-	{
-		for (notDefenseSoldierIter = notDefenseSoldierList.begin(); notDefenseSoldierIter != notDefenseSoldierList.end(); notDefenseSoldierIter++)
-		{
-			(*notDefenseSoldierIter)->Init();
-			(*notDefenseSoldierIter)->SetDefenseObject(soldierBulletModelHandle);
-		}
-	}
-
 	// ショップ
 	defenseBuyObject = new DefenseBuyObject(buyObject);
 	defenseBuyObject->Init();
@@ -249,6 +196,8 @@ void DefenseManager::Draw()
 	FireDraw();
 	// 兵士表示
 	SoldierDraw();
+	// 体力
+	HpDraw();
 	// ショッピングモール表示
 	defenseBuyObject->Draw();
 }
@@ -284,16 +233,81 @@ void DefenseManager::ShopFade()
 	}
 }
 
+// 壁リスト初期化
+void DefenseManager::WallInit()
+{
+	// 壁用リスト初期化
+	DefenseWall *defenseWall = new DefenseWall(wallModelHamdel);
+	notDefenseWallList.push_back(defenseWall);
+
+	// 壁 未使用リスト登録
+	if (notDefenseWallList.empty()) { return; }
+
+	for (notDefenseWallIter = notDefenseWallList.begin(); notDefenseWallIter != notDefenseWallList.end(); notDefenseWallIter++)
+	{
+		(*notDefenseWallIter)->Init();
+		(*notDefenseWallIter)->SetRotain(ZEROCLEAR);
+	}
+}
+
+// 攻撃ボールリスト初期化
+void DefenseManager::AtackBallInit()
+{
+	// 攻撃ボール用リスト初期化
+	DefenseAtackBall *defenseAtackBall = new DefenseAtackBall(atackBallModelHandle);
+	notDefenseAtackBallList.push_back(defenseAtackBall);
+
+	// 攻撃ボール 未使用リスト登録
+	if (notDefenseAtackBallList.empty()) { return; }
+
+	for (notDefenseAtackBallIter = notDefenseAtackBallList.begin(); notDefenseAtackBallIter != notDefenseAtackBallList.end(); notDefenseAtackBallIter++)
+	{
+		(*notDefenseAtackBallIter)->Init();
+	}
+}
+
+// 炎リスト初期化
+void DefenseManager::FireInit()
+{
+	// 炎攻撃用リスト初期化
+	DefenseFire *defenseFire = new DefenseFire(fireModelHandle);
+	notDefenseFireList.push_back(defenseFire);
+
+	// 炎攻撃 未使用リスト登録
+	if (notDefenseFireList.empty()) { return; }
+
+	for (notDefenseFireIter = notDefenseFireList.begin(); notDefenseFireIter != notDefenseFireList.end(); notDefenseFireIter++)
+	{
+		(*notDefenseFireIter)->Init();
+	}
+}
+
+// 兵士リスト初期化
+void DefenseManager::SoldierInit()
+{
+	// 兵士攻撃用変数
+	DefenseSoldier *defenseSoldier = new DefenseSoldier(soldierModelHandle);
+	notDefenseSoldierList.push_back(defenseSoldier);
+
+	// 兵士攻撃 未使用リスト登録
+	if (notDefenseSoldierList.empty()) { return; }
+
+	for (notDefenseSoldierIter = notDefenseSoldierList.begin(); notDefenseSoldierIter != notDefenseSoldierList.end(); notDefenseSoldierIter++)
+	{
+		(*notDefenseSoldierIter)->Init();
+		(*notDefenseSoldierIter)->SetDefenseObject(soldierBulletModelHandle);
+	}
+}
+
 // 壁描画
 void DefenseManager::WallDraw()
 {
 	// ディフェンス用壁 表示
-	if (!defenseWallList.empty())
+	if (defenseWallList.empty()) { return; }
+
+	for (defenseWallListIter = defenseWallList.begin(); defenseWallListIter != defenseWallList.end(); defenseWallListIter++)
 	{
-		for (defenseWallListIter = defenseWallList.begin(); defenseWallListIter != defenseWallList.end(); defenseWallListIter++)
-		{
-			if ((*defenseWallListIter)->GetDefense()) { (*defenseWallListIter)->Draw(); }
-		}
+		if ((*defenseWallListIter)->GetDefense()) { (*defenseWallListIter)->Draw(); }
 	}
 }
 
@@ -301,40 +315,35 @@ void DefenseManager::WallDraw()
 void DefenseManager::AttackBallDraw()
 {
 	// ディフェンス用アタックボール 表示
-	if (!defenseAtackBallList.empty())
+	if (defenseAtackBallList.empty()) { return; }
+
+	for (defenseAtackBallListIter = defenseAtackBallList.begin(); defenseAtackBallListIter != defenseAtackBallList.end(); defenseAtackBallListIter++)
 	{
-		for (defenseAtackBallListIter = defenseAtackBallList.begin(); defenseAtackBallListIter != defenseAtackBallList.end(); defenseAtackBallListIter++)
-		{
-			if ((*defenseAtackBallListIter)->GetDefense()) { (*defenseAtackBallListIter)->Draw(); }
-		}
+		if ((*defenseAtackBallListIter)->GetDefense()) { (*defenseAtackBallListIter)->Draw(); }
 	}
 }
 
 // 炎描画
 void DefenseManager::FireDraw()
 {
-
 	// ディフェンス用炎 表示
-	if (!defenseFireList.empty())
+	if (defenseFireList.empty()) { return; }
+
+	for (defenseFireListIter = defenseFireList.begin(); defenseFireListIter != defenseFireList.end(); defenseFireListIter++)
 	{
-		for (defenseFireListIter = defenseFireList.begin(); defenseFireListIter != defenseFireList.end(); defenseFireListIter++)
-		{
-			if ((*defenseFireListIter)->GetDefense()) { (*defenseFireListIter)->Draw(); }
-		}
+		if ((*defenseFireListIter)->GetDefense()) { (*defenseFireListIter)->Draw(); }
 	}
 }
 
 // 兵士描画
 void DefenseManager::SoldierDraw()
 {
-
 	// ディフェンス用兵士 表示
-	if (!defenseSoldierList.empty())
+	if (defenseSoldierList.empty()) { return; }
+
+	for (defenseSoldierListIter = defenseSoldierList.begin(); defenseSoldierListIter != defenseSoldierList.end(); defenseSoldierListIter++)
 	{
-		for (defenseSoldierListIter = defenseSoldierList.begin(); defenseSoldierListIter != defenseSoldierList.end(); defenseSoldierListIter++)
-		{
-			if ((*defenseSoldierListIter)->GetDefense()) { (*defenseSoldierListIter)->Draw(); }
-		}
+		if ((*defenseSoldierListIter)->GetDefense()) { (*defenseSoldierListIter)->Draw(); }
 	}
 }
 
@@ -344,43 +353,15 @@ void DefenseManager::HpDraw()
 	// ディレクショナルライトの作成
 	lightHandle = CreateDirLightHandle(VGet(-1.0f, 0.0f, -1.0f));
 	upLightHandle = CreateDirLightHandle(VGet(0.0f, 1.0f, 0.0f));
-
-	// ディフェンス用壁のHP表示
-	if (!defenseWallList.empty())
-	{
-		for (defenseWallListIter = defenseWallList.begin(); defenseWallListIter != defenseWallList.end(); defenseWallListIter++)
-		{
-			if ((*defenseWallListIter)->GetDefense()) { (*defenseWallListIter)->HpDraw(); }
-		}
-	}
-
-	// ディフェンス用アタックボールのHP表示
-	if (!defenseAtackBallList.empty())
-	{
-		for (defenseAtackBallListIter = defenseAtackBallList.begin(); defenseAtackBallListIter != defenseAtackBallList.end(); defenseAtackBallListIter++)
-		{
-			if ((*defenseAtackBallListIter)->GetDefense()) { (*defenseAtackBallListIter)->HpDraw(); }
-		}
-	}
-
-	// ディフェンス用炎のHP表示
-	if (!defenseFireList.empty())
-	{
-		for (defenseFireListIter = defenseFireList.begin(); defenseFireListIter != defenseFireList.end(); defenseFireListIter++)
-		{
-			if ((*defenseFireListIter)->GetDefense()) { (*defenseFireListIter)->HpDraw(); }
-			if ((*defenseFireListIter)->GetDefense()) { EFFECT.UpdateFire((*defenseFireListIter), defenseFireList.size()); }
-		}
-	}
-
-	// ディフェンス用兵士のHP表示
-	if (!defenseSoldierList.empty())
-	{
-		for (defenseSoldierListIter = defenseSoldierList.begin(); defenseSoldierListIter != defenseSoldierList.end(); defenseSoldierListIter++)
-		{
-			if ((*defenseSoldierListIter)->GetDefense()) { (*defenseSoldierListIter)->HpDraw(); }
-		}
-	}
+	
+	// 壁HP
+	WallHp();
+	// 攻撃ボールHP
+	AttackBallHp();
+	// 炎HP
+	FireHp();
+	// 兵士HP
+	SoldierHp();
 
 	if (Tower::GetWaveInterval()) { MV1DrawModel(arrowModelHandle); }
 	//MV1DrawModel(arrowModelHandle);
@@ -390,41 +371,89 @@ void DefenseManager::HpDraw()
 	DeleteLightHandle(upLightHandle);
 }
 
+// 壁HP
+void DefenseManager::WallHp()
+{
+	// ディフェンス用壁のHP表示
+	if (defenseWallList.empty()) { return; }
+
+	for (defenseWallListIter = defenseWallList.begin(); defenseWallListIter != defenseWallList.end(); defenseWallListIter++)
+	{
+		if ((*defenseWallListIter)->GetDefense()) { (*defenseWallListIter)->HpDraw(); }
+	}
+}
+
+// 攻撃ボールHP
+void DefenseManager::AttackBallHp()
+{
+	// ディフェンス用アタックボールのHP表示
+	if (defenseAtackBallList.empty()) { return; }
+
+	for (defenseAtackBallListIter = defenseAtackBallList.begin(); defenseAtackBallListIter != defenseAtackBallList.end(); defenseAtackBallListIter++)
+	{
+		if ((*defenseAtackBallListIter)->GetDefense()) { (*defenseAtackBallListIter)->HpDraw(); }
+	}
+}
+
+// 炎HP
+void DefenseManager::FireHp()
+{
+	// ディフェンス用炎のHP表示
+	if (defenseFireList.empty()) { return; }
+
+	for (defenseFireListIter = defenseFireList.begin(); defenseFireListIter != defenseFireList.end(); defenseFireListIter++)
+	{
+		if ((*defenseFireListIter)->GetDefense()) { (*defenseFireListIter)->HpDraw(); }
+		if ((*defenseFireListIter)->GetDefense()) { EFFECT.UpdateFire((*defenseFireListIter), defenseFireList.size()); }
+	}
+}
+
+// 兵士HP
+void DefenseManager::SoldierHp()
+{
+	// ディフェンス用兵士のHP表示
+	if (defenseSoldierList.empty()) { return; }
+
+	for (defenseSoldierListIter = defenseSoldierList.begin(); defenseSoldierListIter != defenseSoldierList.end(); defenseSoldierListIter++)
+	{
+		if ((*defenseSoldierListIter)->GetDefense()) { (*defenseSoldierListIter)->HpDraw(); }
+	}
+}
+
 // 壁更新
 void DefenseManager::WallUpdate(CharacterBase *_player, CharacterBase *_small, CharacterBase *_medium, CharacterBase *_boss)
 {
 	// ディフェンス用壁更新
 	// 壁 使用リストにあれば
-	if (!defenseWallList.empty())
+	if (defenseWallList.empty()) { return; }
+
+	for (defenseWallListIter = defenseWallList.begin(); defenseWallListIter != defenseWallList.end(); defenseWallListIter++)
 	{
-		for (defenseWallListIter = defenseWallList.begin(); defenseWallListIter != defenseWallList.end(); defenseWallListIter++)
+		// 出現していれば
+		if ((*defenseWallListIter)->GetDefense())
 		{
-			// 出現していれば
-			if ((*defenseWallListIter)->GetDefense())
-			{
-				// 更新
-				(*defenseWallListIter)->Update();
+			// 更新
+			(*defenseWallListIter)->Update();
 
-				// 壁の当たり判定
-				HitCheck::HitCheckDefenseWall((*defenseWallListIter), _player, WALL_PLAYER_RANGE, 0);
-				HitCheck::HitCheckDefenseWall((*defenseWallListIter), _small, WALL_SMALL_ENEMY_RANGE, WALL_SMALL_ENEMY_DAMAGE);
-				HitCheck::HitCheckDefenseWall((*defenseWallListIter), _medium, WALL_MEDIUM_BOSS_RANGE, WALL_MEDIUM_BOSS_DAMAGE);
-				HitCheck::HitCheckDefenseWall((*defenseWallListIter), _boss, WALL_BOSS_RANGE, WALL_BOSS_DAMAGE);
-			}
+			// 壁の当たり判定
+			HitCheck::HitCheckDefenseWall((*defenseWallListIter), _player, WALL_PLAYER_RANGE, 0);
+			HitCheck::HitCheckDefenseWall((*defenseWallListIter), _small, WALL_SMALL_ENEMY_RANGE, WALL_SMALL_ENEMY_DAMAGE);
+			HitCheck::HitCheckDefenseWall((*defenseWallListIter), _medium, WALL_MEDIUM_BOSS_RANGE, WALL_MEDIUM_BOSS_DAMAGE);
+			HitCheck::HitCheckDefenseWall((*defenseWallListIter), _boss, WALL_BOSS_RANGE, WALL_BOSS_DAMAGE);
+		}
 
-			// 壁の耐久地が減れば未使用リストへの追加
-			if ((*defenseWallListIter)->GetLife() <= 0)
-			{
-				isNodeFree[(int)(NODE_LINE - (*defenseWallListIter)->GetPos().x) / NODE_DIVISION_LINE][(int)(NODE_COLUMN + (*defenseWallListIter)->GetPos().z) / NODE_DIVISION_COLUMN] = false;
-				isWallNode[(int)(NODE_LINE - (*defenseWallListIter)->GetPos().x) / NODE_DIVISION_LINE][(int)(NODE_COLUMN + (*defenseWallListIter)->GetPos().z) / NODE_DIVISION_COLUMN] = false;
-				// 設置していないことにする
-				(*defenseWallListIter)->SetDefense(false);
+		// 壁の耐久地が減れば未使用リストへの追加
+		if ((*defenseWallListIter)->GetLife() <= 0)
+		{
+			isNodeFree[(int)(NODE_LINE - (*defenseWallListIter)->GetPos().x) / NODE_DIVISION_LINE][(int)(NODE_COLUMN + (*defenseWallListIter)->GetPos().z) / NODE_DIVISION_COLUMN] = false;
+			isWallNode[(int)(NODE_LINE - (*defenseWallListIter)->GetPos().x) / NODE_DIVISION_LINE][(int)(NODE_COLUMN + (*defenseWallListIter)->GetPos().z) / NODE_DIVISION_COLUMN] = false;
+			// 設置していないことにする
+			(*defenseWallListIter)->SetDefense(false);
 
-				// 使用リストから未使用リストへ
-				notDefenseWallList.push_back(*defenseWallListIter);
-				defenseWallList.remove(*defenseWallListIter);
-				break;
-			}
+			// 使用リストから未使用リストへ
+			notDefenseWallList.push_back(*defenseWallListIter);
+			defenseWallList.remove(*defenseWallListIter);
+			break;
 		}
 	}
 }
@@ -434,34 +463,33 @@ void DefenseManager::AttackBallUpdate(CharacterBase *_player, CharacterBase *_sm
 {
 	// ディフェンス用アタックボール更新
 	// 攻撃ボール 使用リストにあれば
-	if (!defenseAtackBallList.empty())
+	if (defenseAtackBallList.empty()) { return; }
+
+	for (defenseAtackBallListIter = defenseAtackBallList.begin(); defenseAtackBallListIter != defenseAtackBallList.end(); defenseAtackBallListIter++)
 	{
-		for (defenseAtackBallListIter = defenseAtackBallList.begin(); defenseAtackBallListIter != defenseAtackBallList.end(); defenseAtackBallListIter++)
+		// 出現していれば
+		if ((*defenseAtackBallListIter)->GetDefense())
 		{
-			// 出現していれば
-			if ((*defenseAtackBallListIter)->GetDefense())
-			{
-				// 更新
-				(*defenseAtackBallListIter)->Update();
+			// 更新
+			(*defenseAtackBallListIter)->Update();
 
-				// 攻撃ボールとの当たり判定
-				HitCheck::HitCheckDefenseAtackBall((*defenseAtackBallListIter), _small, ATACKBALL_SMALL_ENEMY_RANGE, ATACKBALL_SMALL_ENEMY_ATACK_DAMAGE, ATACKBALL_SMALL_ENEMY_HIT_DAMAGE);
-				HitCheck::HitCheckDefenseAtackBall((*defenseAtackBallListIter), _medium, ATACKBALL_MEDIUM_BOSS_RANGE, ATACKBALL_MEDIUM_BOSS_ATACK_DAMAGE, ATACKBALL_MEDIUM_BOSS_HIT_DAMAGE);
-				HitCheck::HitCheckDefenseAtackBall((*defenseAtackBallListIter), _boss, ATACKBALL_BOSS_RANGE, ATACKBALL_BOSS_ATACK_DAMAGE, ATACKBALL_BOSS_HIT_DAMAGE);
-			}
-			// 攻撃ボールの耐久地が減れば未使用リストへの追加
-			if ((*defenseAtackBallListIter)->GetLife() <= 0)
-			{
-				isNodeFree[(int)(NODE_LINE - (*defenseAtackBallListIter)->GetPos().x) / NODE_DIVISION_LINE][(int)(NODE_COLUMN + (*defenseAtackBallListIter)->GetPos().z) / NODE_DIVISION_COLUMN] = false;
-				isAtackBallNode[(int)(NODE_LINE - (*defenseAtackBallListIter)->GetPos().x) / NODE_DIVISION_LINE][(int)(NODE_COLUMN + (*defenseAtackBallListIter)->GetPos().z) / NODE_DIVISION_COLUMN] = false;
-				// 設置していないことにする
-				(*defenseAtackBallListIter)->SetDefense(false);
+			// 攻撃ボールとの当たり判定
+			HitCheck::HitCheckDefenseAtackBall((*defenseAtackBallListIter), _small, ATACKBALL_SMALL_ENEMY_RANGE, ATACKBALL_SMALL_ENEMY_ATACK_DAMAGE, ATACKBALL_SMALL_ENEMY_HIT_DAMAGE);
+			HitCheck::HitCheckDefenseAtackBall((*defenseAtackBallListIter), _medium, ATACKBALL_MEDIUM_BOSS_RANGE, ATACKBALL_MEDIUM_BOSS_ATACK_DAMAGE, ATACKBALL_MEDIUM_BOSS_HIT_DAMAGE);
+			HitCheck::HitCheckDefenseAtackBall((*defenseAtackBallListIter), _boss, ATACKBALL_BOSS_RANGE, ATACKBALL_BOSS_ATACK_DAMAGE, ATACKBALL_BOSS_HIT_DAMAGE);
+		}
+		// 攻撃ボールの耐久地が減れば未使用リストへの追加
+		if ((*defenseAtackBallListIter)->GetLife() <= 0)
+		{
+			isNodeFree[(int)(NODE_LINE - (*defenseAtackBallListIter)->GetPos().x) / NODE_DIVISION_LINE][(int)(NODE_COLUMN + (*defenseAtackBallListIter)->GetPos().z) / NODE_DIVISION_COLUMN] = false;
+			isAtackBallNode[(int)(NODE_LINE - (*defenseAtackBallListIter)->GetPos().x) / NODE_DIVISION_LINE][(int)(NODE_COLUMN + (*defenseAtackBallListIter)->GetPos().z) / NODE_DIVISION_COLUMN] = false;
+			// 設置していないことにする
+			(*defenseAtackBallListIter)->SetDefense(false);
 
-				// 使用リストから未使用リストへ
-				notDefenseAtackBallList.push_back(*defenseAtackBallListIter);
-				defenseAtackBallList.remove(*defenseAtackBallListIter);
-				break;
-			}
+			// 使用リストから未使用リストへ
+			notDefenseAtackBallList.push_back(*defenseAtackBallListIter);
+			defenseAtackBallList.remove(*defenseAtackBallListIter);
+			break;
 		}
 	}
 }
@@ -471,33 +499,32 @@ void DefenseManager::FireUpdate(CharacterBase *_player, CharacterBase *_small, C
 {
 	// ディフェンス用炎更新
 	// 炎攻撃 使用リストにあれば
-	if (!defenseFireList.empty())
+	if (defenseFireList.empty()) { return; }
+	for (defenseFireListIter = defenseFireList.begin(); defenseFireListIter != defenseFireList.end(); defenseFireListIter++)
 	{
-		for (defenseFireListIter = defenseFireList.begin(); defenseFireListIter != defenseFireList.end(); defenseFireListIter++)
+		// 出現していれば
+		if ((*defenseFireListIter)->GetDefense())
 		{
-			// 出現していれば
-			if ((*defenseFireListIter)->GetDefense())
-			{
-				// 更新
-				(*defenseFireListIter)->Update();
+			// 更新
+			(*defenseFireListIter)->Update();
 
-				// 炎攻撃の当たり判定
-				HitCheck::HitCheckDefenseFire((*defenseFireListIter), _small, FIRE_SMALL_ENEMY_RANGE, FIRE_SMALL_ENEMY_ATACK_DAMAGE, FIRE_SMALL_ENEMY_HIT_DAMAGE);
-				HitCheck::HitCheckDefenseFire((*defenseFireListIter), _medium, FIRE_MEDIUM_BOSS_RANGE, FIRE_MEDIUM_BOSS_ATACK_DAMAGE, FIRE_MEDIUM_BOSS_HIT_DAMAGE);
-				HitCheck::HitCheckDefenseFire((*defenseFireListIter), _boss, FIRE_BOSS_RANGE, FIRE_BOSS_ATACK_DAMAGE, FIRE_BOSS_HIT_DAMAGE);
-			}
-			// 炎攻撃の耐久地が減れば未使用リストへの追加
-			if ((*defenseFireListIter)->GetLife() <= 0)
-			{
-				isNodeFree[(int)(NODE_LINE - (*defenseFireListIter)->GetPos().x) / NODE_DIVISION_LINE][(int)(NODE_COLUMN + (*defenseFireListIter)->GetPos().z) / NODE_DIVISION_COLUMN] = false;
-				isFireNode[(int)(NODE_LINE - (*defenseFireListIter)->GetPos().x) / NODE_DIVISION_LINE][(int)(NODE_COLUMN + (*defenseFireListIter)->GetPos().z) / NODE_DIVISION_COLUMN] = false;
-				// 設置していないことにする
-				(*defenseFireListIter)->SetDefense(false);
-				// 使用リストから未使用リストへ
-				notDefenseFireList.push_back(*defenseFireListIter);
-				defenseFireList.remove(*defenseFireListIter);
-				break;
-			}
+			// 炎攻撃の当たり判定
+			HitCheck::HitCheckDefenseFire((*defenseFireListIter), _small, FIRE_SMALL_ENEMY_RANGE, FIRE_SMALL_ENEMY_ATACK_DAMAGE, FIRE_SMALL_ENEMY_HIT_DAMAGE);
+			HitCheck::HitCheckDefenseFire((*defenseFireListIter), _medium, FIRE_MEDIUM_BOSS_RANGE, FIRE_MEDIUM_BOSS_ATACK_DAMAGE, FIRE_MEDIUM_BOSS_HIT_DAMAGE);
+			HitCheck::HitCheckDefenseFire((*defenseFireListIter), _boss, FIRE_BOSS_RANGE, FIRE_BOSS_ATACK_DAMAGE, FIRE_BOSS_HIT_DAMAGE);
+		}
+
+		// 炎攻撃の耐久地が減れば未使用リストへの追加
+		if ((*defenseFireListIter)->GetLife() <= 0)
+		{
+			isNodeFree[(int)(NODE_LINE - (*defenseFireListIter)->GetPos().x) / NODE_DIVISION_LINE][(int)(NODE_COLUMN + (*defenseFireListIter)->GetPos().z) / NODE_DIVISION_COLUMN] = false;
+			isFireNode[(int)(NODE_LINE - (*defenseFireListIter)->GetPos().x) / NODE_DIVISION_LINE][(int)(NODE_COLUMN + (*defenseFireListIter)->GetPos().z) / NODE_DIVISION_COLUMN] = false;
+			// 設置していないことにする
+			(*defenseFireListIter)->SetDefense(false);
+			// 使用リストから未使用リストへ
+			notDefenseFireList.push_back(*defenseFireListIter);
+			defenseFireList.remove(*defenseFireListIter);
+			break;
 		}
 	}
 }
@@ -507,58 +534,49 @@ void DefenseManager::SoldierUpdate(CharacterBase *_player, CharacterBase *_small
 {
 	// ディフェンス用兵士更新
 	// 兵士攻撃 使用リストにあれば
-	if (!defenseSoldierList.empty())
+	if (defenseSoldierList.empty()) { return; }
+	for (defenseSoldierListIter = defenseSoldierList.begin(); defenseSoldierListIter != defenseSoldierList.end(); defenseSoldierListIter++)
 	{
-		for (defenseSoldierListIter = defenseSoldierList.begin(); defenseSoldierListIter != defenseSoldierList.end(); defenseSoldierListIter++)
+		// 出現していれば
+		if ((*defenseSoldierListIter)->GetDefense())
 		{
-			// 出現していれば
-			if ((*defenseSoldierListIter)->GetDefense())
+			// 更新
+			(*defenseSoldierListIter)->Update();
+
+			// 兵士攻撃の当たり判定
+			HitCheck::HitCheckDefenseSoldier((*defenseSoldierListIter), _small, SOLDIER_SMALL_ENEMY_RANGE, SOLDIER_SMALL_ENEMY_HIT_DAMAGE);
+			HitCheck::HitCheckDefenseSoldier((*defenseSoldierListIter), _medium, SOLDIER_MEDIUM_BOSS_RANGE, SOLDIER_MEDIUM_BOSS_HIT_DAMAGE);
+			HitCheck::HitCheckDefenseSoldier((*defenseSoldierListIter), _boss, SOLDIER_BOSS_RANGE, SOLDIER_BOSS_HIT_DAMAGE);
+
+			// 範囲内かどうか
+			if (HitCheck::HitCheckCircleEnemyToSoldier(_small, (*defenseSoldierListIter), SOLDIER_WITH_IN_RANGE))
 			{
-				// 更新
-				(*defenseSoldierListIter)->Update();
-
-				// 兵士攻撃の当たり判定
-				HitCheck::HitCheckDefenseSoldier((*defenseSoldierListIter), _small, SOLDIER_SMALL_ENEMY_RANGE, SOLDIER_SMALL_ENEMY_HIT_DAMAGE);
-				HitCheck::HitCheckDefenseSoldier((*defenseSoldierListIter), _medium, SOLDIER_MEDIUM_BOSS_RANGE, SOLDIER_MEDIUM_BOSS_HIT_DAMAGE);
-				HitCheck::HitCheckDefenseSoldier((*defenseSoldierListIter), _boss, SOLDIER_BOSS_RANGE, SOLDIER_BOSS_HIT_DAMAGE);
-
-				// 範囲内かどうか
-				if (HitCheck::HitCheckCircleEnemyToSoldier(_small, (*defenseSoldierListIter), SOLDIER_WITH_IN_RANGE))
-				{
-					HitCheck::HitCheckDefenseSoldierBullet((*defenseSoldierListIter), _small, SOLDIER_SMALL_ENEMY_RANGE, SOLDIER_SMALL_ENEMY_ATACK_DAMAGE);
-					(*defenseSoldierListIter)->SetTargetEnemy(_small->GetPos());
-					(*defenseSoldierListIter)->SetAngleSpeed(0.2f);
-				}
-				else if (HitCheck::HitCheckCircleEnemyToSoldier(_medium, (*defenseSoldierListIter), SOLDIER_WITH_IN_RANGE))
-				{
-					HitCheck::HitCheckDefenseSoldierBullet((*defenseSoldierListIter), _medium, SOLDIER_MEDIUM_BOSS_RANGE, SOLDIER_MEDIUM_BOSS_ATACK_DAMAGE);
-					(*defenseSoldierListIter)->SetTargetEnemy(_medium->GetPos());
-					(*defenseSoldierListIter)->SetAngleSpeed(0.2f);
-				}
-				else if (HitCheck::HitCheckCircleEnemyToSoldier(_boss, (*defenseSoldierListIter), SOLDIER_WITH_IN_RANGE))
-				{
-					HitCheck::HitCheckDefenseSoldierBullet((*defenseSoldierListIter), _boss, SOLDIER_BOSS_RANGE, SOLDIER_BOSS_ATACK_DAMAGE);
-					(*defenseSoldierListIter)->SetTargetEnemy(_boss->GetPos());
-					(*defenseSoldierListIter)->SetAngleSpeed(0.2f);
-				}
-				else
-				{
-					(*defenseSoldierListIter)->SetAngleSpeed(0.f);
-				}
+				HitCheck::HitCheckDefenseSoldierBullet((*defenseSoldierListIter), _small, SOLDIER_SMALL_ENEMY_RANGE, SOLDIER_SMALL_ENEMY_ATACK_DAMAGE);
+				(*defenseSoldierListIter)->SetTargetEnemy(_small->GetPos());
 			}
-			// 兵士攻撃の耐久地が減れば未使用リストへの追加
-			if ((*defenseSoldierListIter)->GetLife() <= 0)
+			else if (HitCheck::HitCheckCircleEnemyToSoldier(_medium, (*defenseSoldierListIter), SOLDIER_WITH_IN_RANGE))
 			{
-				isNodeFree[(int)(NODE_LINE - (*defenseSoldierListIter)->GetPos().x) / NODE_DIVISION_LINE][(int)(NODE_COLUMN + (*defenseSoldierListIter)->GetPos().z) / NODE_DIVISION_COLUMN] = false;
-				isSoldierNode[(int)(NODE_LINE - (*defenseSoldierListIter)->GetPos().x) / NODE_DIVISION_LINE][(int)(NODE_COLUMN + (*defenseSoldierListIter)->GetPos().z) / NODE_DIVISION_COLUMN] = false;
-				// 設置していないことにする
-				(*defenseSoldierListIter)->SetDefense(false);
-
-				// 使用リストから未使用リストへ
-				notDefenseSoldierList.push_back(*defenseSoldierListIter);
-				defenseSoldierList.remove(*defenseSoldierListIter);
-				break;
+				HitCheck::HitCheckDefenseSoldierBullet((*defenseSoldierListIter), _medium, SOLDIER_MEDIUM_BOSS_RANGE, SOLDIER_MEDIUM_BOSS_ATACK_DAMAGE);
+				(*defenseSoldierListIter)->SetTargetEnemy(_medium->GetPos());
 			}
+			else if (HitCheck::HitCheckCircleEnemyToSoldier(_boss, (*defenseSoldierListIter), SOLDIER_WITH_IN_RANGE))
+			{
+				HitCheck::HitCheckDefenseSoldierBullet((*defenseSoldierListIter), _boss, SOLDIER_BOSS_RANGE, SOLDIER_BOSS_ATACK_DAMAGE);
+				(*defenseSoldierListIter)->SetTargetEnemy(_boss->GetPos());
+			}
+		}
+		// 兵士攻撃の耐久地が減れば未使用リストへの追加
+		if ((*defenseSoldierListIter)->GetLife() <= 0)
+		{
+			isNodeFree[(int)(NODE_LINE - (*defenseSoldierListIter)->GetPos().x) / NODE_DIVISION_LINE][(int)(NODE_COLUMN + (*defenseSoldierListIter)->GetPos().z) / NODE_DIVISION_COLUMN] = false;
+			isSoldierNode[(int)(NODE_LINE - (*defenseSoldierListIter)->GetPos().x) / NODE_DIVISION_LINE][(int)(NODE_COLUMN + (*defenseSoldierListIter)->GetPos().z) / NODE_DIVISION_COLUMN] = false;
+			// 設置していないことにする
+			(*defenseSoldierListIter)->SetDefense(false);
+
+			// 使用リストから未使用リストへ
+			notDefenseSoldierList.push_back(*defenseSoldierListIter);
+			defenseSoldierList.remove(*defenseSoldierListIter);
+			break;
 		}
 	}
 }
@@ -588,48 +606,8 @@ void DefenseManager::DescriptionUpdate(CharacterBase *_player)
 		bool isMouse = isChangeControlor && MOUSE_INPUT.MousePush(MOUSE_INPUT_LEFT);
 		bool isControl = !isChangeControlor && PAD_INPUT.PadPush("1P", XINPUT_BUTTON_A);
 
-
-		// 当たり判定内にあってかつパッドの時は移動を遅くする
-		if ((SCREEN_X / 2.5f - 35) - 17.5f < mouseX && (SCREEN_X / 2.5f + 350) + 17.5f > mouseX &&
-			(SCREEN_Y / 1.8f - 17) - 17.5f < mouseY && (SCREEN_Y / 1.8f + 175) + 17.5f > mouseY)
-		{
-			// マウスの速度を下げる
-			mouseSpeed = 10;
-		}
-		else
-		{
-			// マウスの速度を下げる
-			mouseSpeed = 0;
-		}
-
-		// マウスの位置取得
-		if (isChangeControlor)
-		{
-			GetMousePoint(&mouseX, &mouseY);
-			// 
-			if (PAD_INPUT.GetPadInput("1P").ThumbLX <= -STICK_LEAN ||
-				PAD_INPUT.GetPadInput("1P").ThumbLX >= STICK_LEAN ||
-				PAD_INPUT.GetPadInput("1P").ThumbLY <= -STICK_LEAN ||
-				PAD_INPUT.GetPadInput("1P").ThumbLY >= STICK_LEAN)
-			{
-				isChangeControlor = false;
-			}
-
-		}
-		else
-		{
-			if (PAD_INPUT.GetPadInput("1P").ThumbLX <= -STICK_LEAN) { mouseX -= MOUSE_SPEED - mouseSpeed; }
-			if (PAD_INPUT.GetPadInput("1P").ThumbLX >= STICK_LEAN) { mouseX += MOUSE_SPEED - mouseSpeed; }
-			if (PAD_INPUT.GetPadInput("1P").ThumbLY <= -STICK_LEAN) { mouseY += MOUSE_SPEED - mouseSpeed; }
-			if (PAD_INPUT.GetPadInput("1P").ThumbLY >= STICK_LEAN) { mouseY -= MOUSE_SPEED - mouseSpeed; }
-
-			if (MOUSE_INPUT.MousePush(MOUSE_INPUT_LEFT) ||
-				MOUSE_INPUT.MousePush(MOUSE_INPUT_RIGHT) ||
-				MOUSE_INPUT.MousePush(MOUSE_INPUT_MIDDLE))
-			{
-				isChangeControlor = true;
-			}
-		}
+		// パッドとマウスの切り替え
+		PadOrMouseChange();
 
 		// 現在のショップにいる番号
 		if (itemNumber == 0)
@@ -710,9 +688,12 @@ void DefenseManager::DescriptionUpdate(CharacterBase *_player)
 	}
 }
 
-// ショップ壁更新
+// ショップにある壁更新
 void DefenseManager::WallShopUpdate(CharacterBase *_player)
 {
+	// 壁リスト初期化
+	WallInit();
+
 	// 壁のボタン
 	if (SHOP_X - SHOP_BLANK < mouseX && SHOP_X + SHOP_BLANK > mouseX &&
 		SHOP_Y_2 - SHOP_BLANK_2 < mouseY && SHOP_Y_2 + SHOP_BLANK_2 > mouseY)
@@ -759,9 +740,11 @@ void DefenseManager::WallShopUpdate(CharacterBase *_player)
 	}
 }
 
-// ショップ攻撃ボール更新
+// ショップにある攻撃ボール更新
 void DefenseManager::AttackBallShopUpdate(CharacterBase *_player)
 {
+	// 攻撃ボールリスト初期化
+	AtackBallInit();
 	// 攻撃ボールのボタン
 	if (SHOP_X - SHOP_BLANK < mouseX && SHOP_X + SHOP_BLANK > mouseX &&
 		SHOP_Y - SHOP_BLANK_2 < mouseY && SHOP_Y + SHOP_BLANK_2 > mouseY)
@@ -809,9 +792,12 @@ void DefenseManager::AttackBallShopUpdate(CharacterBase *_player)
 	}
 }
 
-// ショップ炎更新
+// ショップにある炎更新
 void DefenseManager::FireShopUpdate(CharacterBase *_player)
 {
+	// 炎リスト初期化
+	FireInit();
+
 	// 炎攻撃のボタン
 	if (0 < mouseX && SHOP_BLANK * 2 > mouseX &&
 		SHOP_Y_2 - SHOP_BLANK_2 < mouseY && SHOP_Y_2 + SHOP_BLANK_2 > mouseY)
@@ -859,9 +845,12 @@ void DefenseManager::FireShopUpdate(CharacterBase *_player)
 	}
 }
 
-// ショップ兵士更新
+// ショップにある兵士更新
 void DefenseManager::SoldierShopUpdate(CharacterBase *_player)
 {
+	// 兵士リスト初期化
+	SoldierInit();
+
 	// 兵士攻撃のボタン
 	if (0 < mouseX && SHOP_BLANK * 2 > mouseX &&
 		SHOP_Y - SHOP_BLANK_2 < mouseY && SHOP_Y + SHOP_BLANK_2 > mouseY)
@@ -922,25 +911,24 @@ void DefenseManager::ShopItemStopSound()
 void DefenseManager::WallInstallation(int _row, int _col)
 {
 	// 壁の使用リストにあれば
-	if (!defenseWallList.empty())
-	{
-		for (defenseWallListIter = defenseWallList.begin(); defenseWallListIter != defenseWallList.end(); defenseWallListIter++)
-		{
-			// かつ設置されていなければ
-			if (!(*defenseWallListIter)->GetDefense() && isWall)
-			{
-				// 効果音再生
-				if (wallSizeCount > 0) { se[INSTALLATION]->PlaySoundEffect(); }
+	if (defenseWallList.empty()) { return; }
 
-				// 数を減らす
-				wallSizeCount--;
-				isWallNode[_row][_col] = true;
-				isNodeFree[_row][_col] = true;
-				// 設置
-				(*defenseWallListIter)->SetDefense(true);
-				(*defenseWallListIter)->SetPos(VGet(NODE_LINE + (_row * -NODE_DIVISION_LINE), 0, -NODE_COLUMN + (_col * NODE_DIVISION_COLUMN)));
-				break;
-			}
+	for (defenseWallListIter = defenseWallList.begin(); defenseWallListIter != defenseWallList.end(); defenseWallListIter++)
+	{
+		// かつ設置されていなければ
+		if (!(*defenseWallListIter)->GetDefense() && isWall)
+		{
+			// 効果音再生
+			if (wallSizeCount > 0) { se[INSTALLATION]->PlaySoundEffect(); }
+
+			// 数を減らす
+			wallSizeCount--;
+			isWallNode[_row][_col] = true;
+			isNodeFree[_row][_col] = true;
+			// 設置
+			(*defenseWallListIter)->SetDefense(true);
+			(*defenseWallListIter)->SetPos(VGet(NODE_LINE + (_row * -NODE_DIVISION_LINE), 0, -NODE_COLUMN + (_col * NODE_DIVISION_COLUMN)));
+			break;
 		}
 	}
 }
@@ -949,25 +937,24 @@ void DefenseManager::WallInstallation(int _row, int _col)
 void DefenseManager::AttackBallInstallation(int _row, int _col)
 {
 	// 攻撃ボールの使用リストにあれば
-	if (!defenseAtackBallList.empty())
-	{
-		for (defenseAtackBallListIter = defenseAtackBallList.begin(); defenseAtackBallListIter != defenseAtackBallList.end(); defenseAtackBallListIter++)
-		{
-			// かつ設置されていなければ
-			if (!(*defenseAtackBallListIter)->GetDefense() && isAtackBall)
-			{
-				// 効果音再生
-				if (atackBallSizeCount > 0) { se[INSTALLATION]->PlaySoundEffect(); }
+	if (defenseAtackBallList.empty()) { return; }
 
-				// 数を減らし
-				atackBallSizeCount--;
-				isAtackBallNode[_row][_col] = true;
-				isNodeFree[_row][_col] = true;
-				// 設置
-				(*defenseAtackBallListIter)->SetDefense(true);
-				(*defenseAtackBallListIter)->SetPos(VGet(NODE_LINE + (_row * -NODE_DIVISION_LINE), 0, -NODE_COLUMN + (_col * NODE_DIVISION_COLUMN)));
-				break;
-			}
+	for (defenseAtackBallListIter = defenseAtackBallList.begin(); defenseAtackBallListIter != defenseAtackBallList.end(); defenseAtackBallListIter++)
+	{
+		// かつ設置されていなければ
+		if (!(*defenseAtackBallListIter)->GetDefense() && isAtackBall)
+		{
+			// 効果音再生
+			if (atackBallSizeCount > 0) { se[INSTALLATION]->PlaySoundEffect(); }
+
+			// 数を減らし
+			atackBallSizeCount--;
+			isAtackBallNode[_row][_col] = true;
+			isNodeFree[_row][_col] = true;
+			// 設置
+			(*defenseAtackBallListIter)->SetDefense(true);
+			(*defenseAtackBallListIter)->SetPos(VGet(NODE_LINE + (_row * -NODE_DIVISION_LINE), 0, -NODE_COLUMN + (_col * NODE_DIVISION_COLUMN)));
+			break;
 		}
 	}
 }
@@ -976,25 +963,24 @@ void DefenseManager::AttackBallInstallation(int _row, int _col)
 void DefenseManager::FireInstallation(int _row, int _col)
 {
 	// 炎攻撃の使用リストにあれば
-	if (!defenseFireList.empty())
-	{
-		for (defenseFireListIter = defenseFireList.begin(); defenseFireListIter != defenseFireList.end(); defenseFireListIter++)
-		{
-			// かつ設置されていなければ
-			if (!(*defenseFireListIter)->GetDefense() && isFire)
-			{
-				// 効果音再生
-				if (fireSizeCount > 0) { se[INSTALLATION]->PlaySoundEffect(); }
+	if (defenseFireList.empty()) { return; }
 
-				// 数を減らす
-				fireSizeCount--;
-				isFireNode[_row][_col] = true;
-				isNodeFree[_row][_col] = true;
-				// 設置
-				(*defenseFireListIter)->SetDefense(true);
-				(*defenseFireListIter)->SetPos(VGet(NODE_LINE + (_row * -NODE_DIVISION_LINE), 0, -NODE_COLUMN + (_col * NODE_DIVISION_COLUMN)));
-				break;
-			}
+	for (defenseFireListIter = defenseFireList.begin(); defenseFireListIter != defenseFireList.end(); defenseFireListIter++)
+	{
+		// かつ設置されていなければ
+		if (!(*defenseFireListIter)->GetDefense() && isFire)
+		{
+			// 効果音再生
+			if (fireSizeCount > 0) { se[INSTALLATION]->PlaySoundEffect(); }
+
+			// 数を減らす
+			fireSizeCount--;
+			isFireNode[_row][_col] = true;
+			isNodeFree[_row][_col] = true;
+			// 設置
+			(*defenseFireListIter)->SetDefense(true);
+			(*defenseFireListIter)->SetPos(VGet(NODE_LINE + (_row * -NODE_DIVISION_LINE), 0, -NODE_COLUMN + (_col * NODE_DIVISION_COLUMN)));
+			break;
 		}
 	}
 }
@@ -1003,25 +989,73 @@ void DefenseManager::FireInstallation(int _row, int _col)
 void DefenseManager::SoldierInstallation(int _row, int _col)
 {
 	// 兵士攻撃の使用リストにあれば
-	if (!defenseSoldierList.empty())
-	{
-		for (defenseSoldierListIter = defenseSoldierList.begin(); defenseSoldierListIter != defenseSoldierList.end(); defenseSoldierListIter++)
-		{
-			// かつ設置されていなければ
-			if (!(*defenseSoldierListIter)->GetDefense() && isSoldier)
-			{
-				// 効果音再生
-				if (soldierSizeCount > 0) { se[INSTALLATION]->PlaySoundEffect(); }
+	if (defenseSoldierList.empty()) { return; }
 
-				// 数を減らし
-				soldierSizeCount--;
-				isSoldierNode[_row][_col] = true;
-				isNodeFree[_row][_col] = true;
-				// 設置
-				(*defenseSoldierListIter)->SetDefense(true);
-				(*defenseSoldierListIter)->SetPos(VGet(NODE_LINE + (_row * -NODE_DIVISION_LINE), 0, -NODE_COLUMN + (_col * NODE_DIVISION_COLUMN)));
-				break;
-			}
+	for (defenseSoldierListIter = defenseSoldierList.begin(); defenseSoldierListIter != defenseSoldierList.end(); defenseSoldierListIter++)
+	{
+		// かつ設置されていなければ
+		if (!(*defenseSoldierListIter)->GetDefense() && isSoldier)
+		{
+			// 効果音再生
+			if (soldierSizeCount > 0) { se[INSTALLATION]->PlaySoundEffect(); }
+
+			// 数を減らし
+			soldierSizeCount--;
+			isSoldierNode[_row][_col] = true;
+			isNodeFree[_row][_col] = true;
+			// 設置
+			(*defenseSoldierListIter)->SetDefense(true);
+			(*defenseSoldierListIter)->SetPos(VGet(NODE_LINE + (_row * -NODE_DIVISION_LINE), 0, -NODE_COLUMN + (_col * NODE_DIVISION_COLUMN)));
+			break;
+		}
+	}
+}
+
+// マウスとパッド切り替え
+void DefenseManager::PadOrMouseChange()
+{
+	// 当たり判定内にあってかつパッドの時は移動を遅くする
+	if ((SCREEN_X / 2.5f - 35) - 17.5f < mouseX && (SCREEN_X / 2.5f + 350) + 17.5f > mouseX &&
+		(SCREEN_Y / 1.8f - 17) - 17.5f < mouseY && (SCREEN_Y / 1.8f + 175) + 17.5f > mouseY)
+	{
+		// マウスの速度を下げる
+		mouseSpeed = 10;
+	}
+	else
+	{
+		// マウスの速度を下げる
+		mouseSpeed = 0;
+	}
+
+	// マウスの位置取得
+	if (isChangeControlor)
+	{
+		GetMousePoint(&mouseX, &mouseY);
+
+		// パッド切り替え
+		if (PAD_INPUT.GetPadInput("1P").ThumbLX <= -STICK_LEAN ||
+			PAD_INPUT.GetPadInput("1P").ThumbLX >= STICK_LEAN ||
+			PAD_INPUT.GetPadInput("1P").ThumbLY <= -STICK_LEAN ||
+			PAD_INPUT.GetPadInput("1P").ThumbLY >= STICK_LEAN)
+		{
+			isChangeControlor = false;
+		}
+
+	}
+	else
+	{
+		// パッド
+		if (PAD_INPUT.GetPadInput("1P").ThumbLX <= -STICK_LEAN) { mouseX -= MOUSE_SPEED - mouseSpeed; }
+		if (PAD_INPUT.GetPadInput("1P").ThumbLX >= STICK_LEAN) { mouseX += MOUSE_SPEED - mouseSpeed; }
+		if (PAD_INPUT.GetPadInput("1P").ThumbLY <= -STICK_LEAN) { mouseY += MOUSE_SPEED - mouseSpeed; }
+		if (PAD_INPUT.GetPadInput("1P").ThumbLY >= STICK_LEAN) { mouseY -= MOUSE_SPEED - mouseSpeed; }
+
+		// マウス切り替え
+		if (MOUSE_INPUT.MousePush(MOUSE_INPUT_LEFT) ||
+			MOUSE_INPUT.MousePush(MOUSE_INPUT_RIGHT) ||
+			MOUSE_INPUT.MousePush(MOUSE_INPUT_MIDDLE))
+		{
+			isChangeControlor = true;
 		}
 	}
 }

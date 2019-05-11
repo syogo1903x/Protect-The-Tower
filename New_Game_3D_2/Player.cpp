@@ -168,6 +168,7 @@ void Player::CharacterAtack()
 	// e‚Ì’e‚ÌˆÊ’u‚Ìæ“¾
 	VECTOR tmpBulPos = VNorm(VSub(playerTargetPos, Camera::GetCamPos()));
 	VECTOR playerAimPos = VGet(tmpBulPos.x, (characterMove.angle.x) / 1.5f , tmpBulPos.z);
+
 	// e‚Ì’e‚ğ”­Ëo‚·ó‘Ô
 	shot->BulletShot(playerAimPos, characterMove.pos);
 
@@ -450,7 +451,7 @@ void Player::PlayerRotation(Camera &_camera)
 		float camtragetY = atan2(camtraget.x, camtraget.z);
 
 		// ¶‰E‚Ì‰ñ“]
-		characterMove.angle.y = lerpRadian(characterMove.angle.y, (camtragetY + PI / 1.3f) /*+ playerHorizontal*/, PLAYER_ATACK_TURN);
+		characterMove.angle.y = lerpRadian(characterMove.angle.y, (camtragetY + PI / 1.3f), PLAYER_ATACK_TURN);
 
 		// ã‰º‚Ì‰ñ“]
 		characterMove.angle.x = lerpRadian(characterMove.angle.x, (cameraAngle - PI / 2.f), PLAYER_ATACK_TURN);
@@ -498,24 +499,28 @@ void Player::AnimationMaxFrame()
 		characterAtack.deathBlowAnimationCount = 0;
 		deathBlowAnimationCount = 0;
 	}
-	else if (characterAtack.isUseDeathBlow)		// •KE‹Z
+	// •KE‹Z
+	else if (characterAtack.isUseDeathBlow)
 	{
 		characterAtack.deathBlowAnimationCount++;
 		playTime = 0;
 		characterAtack.atackCount = 0;
 	}
-	else if (characterJump.isJump)					// ƒWƒƒƒ“ƒv
+	// ƒWƒƒƒ“ƒv
+	else if (characterJump.isJump)
 	{
 		playTime = totalTime / 2;
 		characterAtack.isAtack = false;
 		characterAtack.atackCount = 0;
 		characterAtack.deathBlowAnimationCount = 0;
 	}
-	else if (characterAtack.isAtack)			// UŒ‚ˆê‰ñ–Ú
+	// UŒ‚ˆê‰ñ–Ú
+	else if (characterAtack.isAtack)
 	{
 		playTime = 0;
 	}
-	else if (characterMove.isMove)				// “®‚¢‚Ä‚¢‚é‚Æ‚«
+	// “®‚¢‚Ä‚¢‚é‚Æ‚«
+	else if (characterMove.isMove)
 	{
 		characterAtack.deathBlowAnimationCount = 0;
 		deathBlowAnimationCount = 0;
@@ -525,7 +530,8 @@ void Player::AnimationMaxFrame()
 			playTime -= totalTime;
 		}
 	}
-	else										// ‘Ò‹@
+	// ‘Ò‹@
+	else
 	{
 		characterAtack.deathBlowAnimationCount = 0;
 		deathBlowAnimationCount = 0;

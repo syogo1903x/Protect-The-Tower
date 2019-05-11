@@ -34,9 +34,6 @@
     <Filter Include="Main\Shader">
       <UniqueIdentifier>{6c32a00e-94a4-439d-a9c7-444fde9bcacb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main\GameMain\MiniMap">
-      <UniqueIdentifier>{c4f0636c-304e-4548-a07c-71be0437abbb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Main\GameMain\UI">
       <UniqueIdentifier>{a88362ba-00fc-459e-a986-5195f3e495c5}</UniqueIdentifier>
     </Filter>
@@ -60,12 +57,6 @@
     </Filter>
     <Filter Include="Main\GameMain\Character\Animation">
       <UniqueIdentifier>{063b9dd4-a251-4e03-a6ad-74b8cc9059d5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\GameMain\Character\Atack">
-      <UniqueIdentifier>{6de75741-749c-47ec-98f1-fda57ec99224}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\GameMain\Character\Move">
-      <UniqueIdentifier>{b3688697-583b-4408-9414-68128313ecb5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Main\GameMain\Music">
       <UniqueIdentifier>{9d1d7be7-52a3-4daa-b47c-58285fe1dfef}</UniqueIdentifier>
@@ -93,9 +84,6 @@
     </Filter>
     <Filter Include="Main\GameMain\Effect\Fade">
       <UniqueIdentifier>{0f9934c3-30de-4e46-8818-53b97197bc91}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\GameMain\Character\Jump">
-      <UniqueIdentifier>{038046d2-979f-42a3-bf39-ae3980f91f85}</UniqueIdentifier>
     </Filter>
     <Filter Include="Main\GameMain\Effect\Effeksser\EffectBase">
       <UniqueIdentifier>{27d18e63-bbbf-4077-b12d-351cd429738d}</UniqueIdentifier>
@@ -130,9 +118,6 @@
     <Filter Include="Main\GameMain\Defence\DefenseSoldier">
       <UniqueIdentifier>{8724699c-96f3-4654-b567-3e787735b34a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main\GameMain\Character\Shot">
-      <UniqueIdentifier>{4b351af4-40e9-43f1-9a58-b8b478f06b5b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Main\GameMain\Load">
       <UniqueIdentifier>{d6628c1f-27d2-42fc-8a3e-ec500fa9129f}</UniqueIdentifier>
     </Filter>
@@ -159,6 +144,21 @@
     </Filter>
     <Filter Include="Main\SceneChange\ResultScene">
       <UniqueIdentifier>{c941f587-d117-40be-9286-ade1a7391a41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Character\Player\Atack">
+      <UniqueIdentifier>{6de75741-749c-47ec-98f1-fda57ec99224}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Character\Player\Jump">
+      <UniqueIdentifier>{038046d2-979f-42a3-bf39-ae3980f91f85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Character\Player\Move">
+      <UniqueIdentifier>{b3688697-583b-4408-9414-68128313ecb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\Character\Player\Shot">
+      <UniqueIdentifier>{4b351af4-40e9-43f1-9a58-b8b478f06b5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameMain\UI\MiniMap">
+      <UniqueIdentifier>{c4f0636c-304e-4548-a07c-71be0437abbb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -253,16 +253,16 @@
       <Filter>Main\GameMain\Character\Player</Filter>
     </ClInclude>
     <ClInclude Include="Atack.h">
-      <Filter>Main\GameMain\Character\Atack</Filter>
+      <Filter>Main\GameMain\Character\Player\Atack</Filter>
     </ClInclude>
     <ClInclude Include="Jump.h">
-      <Filter>Main\GameMain\Character\Jump</Filter>
+      <Filter>Main\GameMain\Character\Player\Jump</Filter>
     </ClInclude>
     <ClInclude Include="Move.h">
-      <Filter>Main\GameMain\Character\Move</Filter>
+      <Filter>Main\GameMain\Character\Player\Move</Filter>
     </ClInclude>
     <ClInclude Include="Shot.h">
-      <Filter>Main\GameMain\Character\Shot</Filter>
+      <Filter>Main\GameMain\Character\Player\Shot</Filter>
     </ClInclude>
     <ClInclude Include="Tower.h">
       <Filter>Main\GameMain\Tower</Filter>
@@ -289,7 +289,7 @@
       <Filter>Main\GameMain\Item</Filter>
     </ClInclude>
     <ClInclude Include="MiniMap.h">
-      <Filter>Main\GameMain\MiniMap</Filter>
+      <Filter>Main\GameMain\UI\MiniMap</Filter>
     </ClInclude>
     <ClInclude Include="DefenseFire.h">
       <Filter>Main\GameMain\Defence\DefenseFire</Filter>
@@ -462,7 +462,7 @@
       <Filter>Main\Input</Filter>
     </ClCompile>
     <ClCompile Include="Shot.cpp">
-      <Filter>Main\GameMain\Character\Shot</Filter>
+      <Filter>Main\GameMain\Character\Player\Shot</Filter>
     </ClCompile>
     <ClCompile Include="Tower.cpp">
       <Filter>Main\GameMain\Tower</Filter>
@@ -486,7 +486,7 @@
       <Filter>Main\GameMain\Item</Filter>
     </ClCompile>
     <ClCompile Include="MiniMap.cpp">
-      <Filter>Main\GameMain\MiniMap</Filter>
+      <Filter>Main\GameMain\UI\MiniMap</Filter>
     </ClCompile>
     <ClCompile Include="DefenseFire.cpp">
       <Filter>Main\GameMain\Defence\DefenseFire</Filter>

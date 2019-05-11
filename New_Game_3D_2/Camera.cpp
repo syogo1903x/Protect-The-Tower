@@ -249,11 +249,10 @@ void Camera::Update(CharacterBase *_player1, Tower *_tower)
 		RotH = MGetRotY(cameraDir.x);
 		cameraPos = VTransform(VTransform(VGet(0.0f, -Player::GetPlayerTargetCameraPos(), -cameraDir.z), RotV), RotH);
 
-		VECTOR tmpCameraPos = VSub(Player::GetPlayerTargetPos(), cameraPos);
-		camTmpPos = tmpCameraPos;
+		camTmpPos = VSub(Player::GetPlayerTargetPos(), cameraPos);
 
 		//プレイヤーの後ろからの視点からプレイヤーを見る角度にカメラを設置
-		SetCameraPositionAndTarget_UpVecY(tmpCameraPos, VGet(Player::GetPlayerTargetPos().x, Player::GetPlayerTargetPos().y + Player::GetPlayerTargetCameraPos(), Player::GetPlayerTargetPos().z));
+		SetCameraPositionAndTarget_UpVecY(camTmpPos, VGet(Player::GetPlayerTargetPos().x, Player::GetPlayerTargetPos().y + Player::GetPlayerTargetCameraPos(), Player::GetPlayerTargetPos().z));
 	}
 }
 
